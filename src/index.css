@@ -1,0 +1,230 @@
+/* --- ShopNova Custom Premium Stylesheet --- */
+:root {
+  /* HSL Color System */
+  --bg-dark: 224 25% 6%;
+  --bg-card: 224 20% 10%;
+  --bg-nav: 224 25% 4%;
+  --text-primary: 220 14% 96%;
+  --text-secondary: 220 10% 70%;
+  --text-muted: 220 10% 50%;
+  
+  --accent-indigo: 250 89% 65%;
+  --accent-indigo-glow: 250 89% 65% / 0.15;
+  --accent-violet: 270 91% 65%;
+  --accent-violet-glow: 270 91% 65% / 0.15;
+  
+  --success: 142 70% 45%;
+  --danger: 346 87% 43%;
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --border-glass: 220 15% 18% / 0.7;
+  --border-focus: 250 89% 65% / 0.6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: hsl(var(--bg-dark));
+  color: hsl(var(--text-primary));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-dark));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-glass));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-indigo));
+}
+
+/* Glassmorphism Styles */
+.glass {
+  background: rgba(8, 10, 18, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border-glass));
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(20, 24, 41, 0.4) 0%, rgba(10, 12, 22, 0.75) 100%);
+  border: 1px solid hsl(var(--border-glass));
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(140, 99, 255, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 
+              0 0 15px rgba(110, 68, 255, 0.15);
+}
+
+/* Glowing Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px hsl(var(--accent-indigo) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 18px hsl(var(--accent-indigo) / 0.6);
+  }
+}
+
+@keyframes cart-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Button & Action Styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, hsl(var(--accent-indigo)) 0%, hsl(var(--accent-violet)) 100%);
+  color: white;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4), 
+              0 0 15px hsl(var(--accent-violet) / 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: hsl(var(--text-primary));
+  border: 1px solid hsl(var(--border-glass));
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--border-glass));
+  border-color: hsl(var(--text-secondary));
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--danger) / 0.15);
+  color: #ff4d6d;
+  border: 1px solid #ff4d6d40;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #ff4d6d;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-indigo {
+  background: hsl(var(--accent-indigo) / 0.15);
+  color: #a5b4fc;
+  border: 1px solid hsl(var(--accent-indigo) / 0.3);
+}
+
+.badge-success {
+  background: hsl(var(--success) / 0.15);
+  color: #a7f3d0;
+  border: 1px solid hsl(var(--success) / 0.3);
+}
+
+/* Base Styling Override for Forms & Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+  letter-spacing: -0.5px;
+}
+
+input {
+  background: rgba(13, 16, 27, 0.5);
+  border: 1px solid hsl(var(--border-glass));
+  color: hsl(var(--text-primary));
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: hsl(var(--accent-indigo));
+  box-shadow: 0 0 10px hsl(var(--accent-indigo) / 0.25);
+}
