@@ -115,7 +115,7 @@ export default function Product() {
           <hr style={styles.divider} />
 
           <div style={styles.pricing}>
-            <span style={styles.priceLabel}>Premium Price</span>
+            <span style={styles.price}>₹{Math.round(product.price * 85).toLocaleString("en-IN")}</span>
             <span style={styles.price}>${product.price.toFixed(2)}</span>
           </div>
 
