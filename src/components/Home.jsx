@@ -9,26 +9,26 @@ export default function Home() {
   const { searchQuery, addToCart } = useCart();
 
   useEffect(() => {
-  setLoading(true);
-  fetch("https://dummyjson.com/products?limit=24")
-    .then((res) => res.json())
-    .then((data) => {
-      const list = data.products.map((p) => ({
-        id: p.id,
-        title: p.title,
-        description: p.description,
-        category: p.category,
-        price: p.price,
-        image: p.thumbnail,
-        rating: { rate: Number(p.rating).toFixed(1) },
-      }));
-      setProducts(list);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Error fetching products:", err);
-      setLoading(false);
-    });
+    setLoading(true);
+    fetch("https://dummyjson.com/products?limit=24")
+      .then((res) => res.json())
+      .then((data) => {
+        const list = data.products.map((p) => ({
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          category: p.category,
+          price: p.price,
+          image: p.thumbnail,
+          rating: { rate: Number(p.rating).toFixed(1) },
+        }));
+        setProducts(list);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+        setLoading(false);
+      });
   }, []);
 
   // Get unique categories list
