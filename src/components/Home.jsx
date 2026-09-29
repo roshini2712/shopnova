@@ -105,7 +105,7 @@ export default function Home() {
                 </h4>
                 
                 <div style={styles.priceRow}>
-                  <span style={styles.price}>${p.price.toFixed(2)}</span>
+                  <span style={styles.price}>₹{Math.round(p.price * 85).toLocaleString("en-IN")}</span>
                   <div style={styles.rating}>
                     <span style={styles.star}>★</span>
                     <span style={styles.rateText}>{p.rating?.rate || "4.5"}</span>
