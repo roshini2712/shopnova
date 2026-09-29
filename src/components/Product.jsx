@@ -11,15 +11,29 @@ export default function Product() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`https://dummyjson.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setProduct(data);
+        if (!data || !data.id) throw new Error("Product not found");
+        setProduct({
+          id: data.id,
+          title: data.title,
+          description: data.description,
+          category: data.category,
+          price: data.price,
+          image: data.thumbnail,
+          rating: {
+            rate: Number(data.rating).toFixed(1),
+            count: data.reviews ? data.reviews.length : 0,
+          },
+        });
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching product details:", err);
-        setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Error fetching product details:", err);
+      setProduct(null);
+      setLoading(false);
+    
       });
   }, [id]);
 
